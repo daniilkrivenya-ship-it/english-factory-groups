@@ -1,1 +1,0 @@
-This branch prepares the previously approved 3-field short form. Do not merge until the Apps Script backend is updated to accept the `contact` field while remaining backward-compatible with the existing form.
