@@ -144,11 +144,14 @@
     const vkPattern = /^(?:https?:\/\/)?(?:www\.)?vk\.(?:com|ru)\/\S+$/i;
     const phoneDigits = contact.replace(/\D/g, '');
 
-    if (emailPattern.test(contact)) return { phone: '', email: contact, method: 'email', comment: '' };
-    if (telegramPattern.test(contact)) return { phone: '', email: '', method: 'telegram', comment: `Telegram: ${contact}` };
-    if (vkPattern.test(contact)) return { phone: '', email: '', method: 'vk', comment: `ВКонтакте: ${contact}` };
-    if (phoneDigits.length >= 7) return { phone: contact, email: '', method: 'call', comment: '' };
-    return { phone: '', email: '', method: 'other', comment: `Контакт: ${contact}` };
+    // The existing Apps Script was built for the old form where both phone and
+    // email were required. Keep both legacy parameters non-empty while the
+    // contact_method and comment fields retain the actual contact type.
+    if (emailPattern.test(contact)) return { phone: contact, email: contact, method: 'email', comment: '' };
+    if (telegramPattern.test(contact)) return { phone: contact, email: contact, method: 'telegram', comment: `Telegram: ${contact}` };
+    if (vkPattern.test(contact)) return { phone: contact, email: contact, method: 'vk', comment: `ВКонтакте: ${contact}` };
+    if (phoneDigits.length >= 7) return { phone: contact, email: contact, method: 'call', comment: '' };
+    return { phone: contact, email: contact, method: 'other', comment: `Контакт: ${contact}` };
   };
 
   const syncLegacyContactFields = () => {
