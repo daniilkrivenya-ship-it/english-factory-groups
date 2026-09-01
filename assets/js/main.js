@@ -134,17 +134,33 @@
 
   const form = document.getElementById('applicationForm');
   const submit = document.getElementById('submitApplication');
-  const contactMethod = document.getElementById('contact-method');
-  const comment = document.getElementById('comment');
-  const commentHint = document.getElementById('commentHint');
   const status = document.getElementById('formStatus');
   const applicationEndpoint = 'https://script.google.com/macros/s/AKfycbzwe7m82M30meKpxDOOy7XsPfPnPpYPuzE91GJ63Obd70AwrzlcepzUlHhAkvb1-TeI/exec';
 
+  const inferContactDetails = (value) => {
+    const contact = value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const telegramPattern = /^(?:@(?:[a-z0-9_]{4,})|(?:https?:\/\/)?(?:t\.me|telegram\.me)\/\S+)$/i;
+    const vkPattern = /^(?:https?:\/\/)?(?:www\.)?vk\.(?:com|ru)\/\S+$/i;
+    const phoneDigits = contact.replace(/\D/g, '');
+
+    if (emailPattern.test(contact)) return { phone: '', email: contact, method: 'email', comment: '' };
+    if (telegramPattern.test(contact)) return { phone: '', email: '', method: 'telegram', comment: `Telegram: ${contact}` };
+    if (vkPattern.test(contact)) return { phone: '', email: '', method: 'vk', comment: `ВКонтакте: ${contact}` };
+    if (phoneDigits.length >= 7) return { phone: contact, email: '', method: 'call', comment: '' };
+    return { phone: '', email: '', method: 'other', comment: `Контакт: ${contact}` };
+  };
+
+  const syncLegacyContactFields = () => {
+    const details = inferContactDetails(document.getElementById('contact-field')?.value || '');
+    document.getElementById('legacyPhone').value = details.phone;
+    document.getElementById('legacyEmail').value = details.email;
+    document.getElementById('legacyContactMethod').value = details.method;
+    document.getElementById('legacyComment').value = details.comment;
+  };
+
   window.updateFormState = () => {
     if (!form || !submit) return;
-    const other = contactMethod?.value === 'other';
-    if (comment) comment.required = other;
-    if (commentHint) commentHint.textContent = other ? 'Укажите другой способ связи' : 'Поле необязательно';
     submit.disabled = !form.checkValidity();
   };
 
@@ -177,6 +193,7 @@
       }
 
       try {
+        syncLegacyContactFields();
         const payload = new URLSearchParams();
         new FormData(form).forEach((value, key) => payload.append(key, String(value)));
 
