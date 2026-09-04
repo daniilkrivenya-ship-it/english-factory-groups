@@ -268,15 +268,51 @@
 (() => {
   const banner = document.getElementById('cookieBanner');
   const accept = document.getElementById('acceptCookies');
+
   if (!banner || !accept) return;
-  const key = 'ef_cookie_consent_v1';
+
+  const consentKey = 'ef_cookie_consent_v2';
+
+  const loadTopMail = () => {
+    if (document.getElementById('tmr-code')) return;
+
+    window._tmr = window._tmr || [];
+
+    window._tmr.push({
+      id: '3789701',
+      type: 'pageView',
+      ecommerce: 'sign_up_page',
+      start: Date.now()
+    });
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.id = 'tmr-code';
+    script.src = 'https://top-fwz1.mail.ru/js/code.js';
+
+    document.head.appendChild(script);
+  };
+
+  let consent = null;
+
   try {
-    if (localStorage.getItem(key) !== 'accepted') banner.classList.add('is-visible');
-  } catch (_) {
-    banner.classList.add('is-visible');
+    consent = localStorage.getItem(consentKey);
+  } catch (_) {}
+
+  if (consent === 'accepted') {
+    loadTopMail();
+    return;
   }
+
+  banner.classList.add('is-visible');
+
   accept.addEventListener('click', () => {
-    try { localStorage.setItem(key, 'accepted'); } catch (_) {}
+    try {
+      localStorage.setItem(consentKey, 'accepted');
+    } catch (_) {}
+
     banner.classList.remove('is-visible');
+    loadTopMail();
   });
 })();
