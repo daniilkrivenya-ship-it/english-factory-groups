@@ -175,7 +175,7 @@
 </div>
 <p class="section-text">Сейчас мы формируем осенние группы и объединяем людей с одними целями и уровнем языка. Мы свяжемся с вами удобным способом, чтобы уточнить детали.</p>
 </div>
-<form action="https://script.google.com/macros/s/AKfycbzwe7m82M30meKpxDOOy7XsPfPnPpYPuzE91GJ63Obd70AwrzlcepzUlHhAkvb1-TeI/exec" class="contact-box" id="applicationForm" method="post" novalidate="">
+<form action="https://englishfactory.ru/api/lead.php" class="contact-box" id="applicationForm" method="post">
 <input name="source" type="hidden" value="group.englishfactory.ru"/><input name="format" type="hidden" value="В группе"/>
 <input id="legacyPhone" name="phone" type="hidden" value=""/>
 <input id="legacyEmail" name="email" type="hidden" value=""/>
@@ -189,7 +189,7 @@
 <div class="field full"><label for="contact-field">Как с вами связаться?</label><input id="contact-field" name="contact" placeholder="@username, ссылка, почта или телефон" required="" type="text"/><small class="field-hint">Укажите ваш ник в Telegram, профиль в VK, почту или номер телефона.</small></div>
 </div>
 <label class="consent-row"><input id="privacyConsent" name="privacy_consent" required="" type="checkbox"/><span>Я даю <a href="https://school.englishfactory.ru/consent/" rel="noopener" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="https://school.englishfactory.ru/policy/" rel="noopener" target="_blank">политику конфиденциальности</a>.</span></label>
-<div class="form-actions"><button class="btn btn-primary" disabled="" id="submitApplication" type="submit">Отправить заявку</button><a class="btn btn-secondary" href="https://test.englishfactory.ru/" rel="noopener" target="_blank">Сначала пройти тест</a></div>
+<div class="form-actions"><button class="btn btn-primary" id="submitApplication" type="submit">Отправить заявку</button><a class="btn btn-secondary" href="https://test.englishfactory.ru/" rel="noopener" target="_blank">Сначала пройти тест</a></div>
 <div aria-live="polite" class="demo-form-status" id="formStatus" role="status"></div>
 </form>
 </div>
@@ -238,6 +238,6 @@
 </div>
 
 <script defer="True" src="assets/js/main.js"></script>
-<script defer src="assets/js/mirror.js"></script>
+<script defer src="assets/js/mirror.js?v=20260923-1"></script>
 </body>
 </html>
