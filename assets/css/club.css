@@ -3,7 +3,11 @@
   --red: #ad5527; --blue: #985c32; --ink: #382a21; --muted: #6a584a;
   --line: #d6bda5; --paper: #eae0d2; --soft-red: #f1d8bf;
   --font: Arial, "Helvetica Neue", sans-serif; --container: 1120px;
-  background: radial-gradient(ellipse at 87% 18%, #d9bea24d, transparent 34%), radial-gradient(ellipse at 8% 74%, #e7bd8540, transparent 35%), linear-gradient(135deg, #eee4d6, #e8dccb 60%, #eee3d4);
+  background:
+    radial-gradient(ellipse at 47% 19%, #f5ead8e6 0%, #f5ead880 26%, transparent 57%),
+    radial-gradient(ellipse at 15% 75%, #b8804b66 0%, transparent 48%),
+    radial-gradient(ellipse at 96% 88%, #a86d3d73 0%, transparent 44%),
+    linear-gradient(125deg, #c49b75 0%, #ddbd98 25%, #eddbc2 52%, #d0a47a 80%, #b58257 100%);
   background-attachment: scroll; font-family: var(--font); font-size: 18px; line-height: 1.55;
 }
 .club-signup-page::before { display: none; }
@@ -21,18 +25,26 @@
 .club-signup-page .btn-main-site { background: #f7efe459; border-color: var(--line); }
 .club-signup-page .btn-main-site:hover { background: #f7efe4; border-color: #a98162; }
 .club-signup-page :is(a,button,input,select):focus-visible { outline: 3px solid #985021; outline-offset: 4px; }
-.club-hero { padding: 64px 0 42px; }
+.club-hero { position: relative; padding: 64px 0 42px; }
 .club-container { position: relative; }
 .hero-copy { position: relative; z-index: 1; }
 .club-signup-page .section-kicker { color: var(--red); font-size: 18px; font-weight: 900; letter-spacing: .13em; margin-bottom: 23px; }
 .club-hero h1 { font-size: clamp(48px, 6.1vw, 82px); line-height: 1.04; font-weight: 900; letter-spacing: -.025em; margin: 0 0 30px; max-width: 890px; }
-.club-intro { max-width: 700px; font-size: 20px; color: var(--ink); line-height: 1.55; margin-bottom: 28px; }
+.club-intro { max-width: 780px; font-size: 20px; color: var(--ink); line-height: 1.55; margin-bottom: 28px; }
 .club-intro p { margin: 0 0 16px; }
 .club-facts { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; list-style: none; margin: 0 0 36px; }
 .club-facts li { padding: 9px 22px; border: 1px solid #d1b498; background: #f6eee3c9; border-radius: 99px; font-size: 17px; font-weight: 600; }
 .club-facts li:first-child { color: #88451f; background: #efd0b5; border-color: #d9ae8c; }
-.hero-visual { position: absolute; top: -39px; right: -140px; width: 510px; pointer-events: none; }
-.cozy-mug { width: 100%; height: auto; mask-image: linear-gradient(to bottom, #000 73%, transparent 99%); }
+/* Fade every exposed bitmap edge; solid centers keep the textile and mug crisp. */
+.cozy-mug { width: 100%; height: auto; mask-image: linear-gradient(to right, transparent, #000 13%, #000 75%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 73%, transparent); mask-composite: intersect; }
+.hero-blanket { position: absolute; pointer-events: none; left: -125px; top: -115px; width: clamp(370px, 33vw, 650px); opacity: .65; mask-image: linear-gradient(to right, #000 26%, transparent 98%), linear-gradient(to bottom, #000 25%, transparent 96%); mask-composite: intersect; }
+.hero-blanket img { width: 100%; height: auto; }
+.blanket-light { top: 62%; left: 64%; }
+.signup-container { position: relative; }
+.contact-visual { position: absolute; pointer-events: none; width: 410px; right: -118px; bottom: 12px; }
+.club-signup-page #contact .section-head { position: relative; z-index: 1; }
+.club-signup-page #contact .contact-box { position: relative; width: calc(100% - 240px); z-index: 1; background: #f7f0e5e6; }
+
 .warm-light { position: absolute; width: 4px; height: 4px; border-radius: 100%; background: #fff3c5; box-shadow: 0 0 6px 2px #f1b853b3; }
 .light-one { top: 19%; right: 27%; }.light-two { top: 29%; right: 9%; width: 3px; height: 3px; }.light-three { top: 11%; right: 46%; width: 3px; height: 3px; }
 .club-choose { position: relative; margin: 0 0 20px; font-size: 20px; color: var(--ink); }
@@ -76,8 +88,7 @@
 .club-signup-page .mobile-menu-toggle { background: #f5ebdd; border-color: var(--line); color: var(--ink); }
 .club-signup-page .mobile-menu { background: #eee2d1; }
 @media (max-width: 1100px) {
-  .hero-visual { width: 440px; right: -145px; top: 12px; }
-  .club-intro { max-width: 64%; font-size: 19px; }
+  .club-intro { max-width: 780px; font-size: 19px; }
   .session-copy { padding-left: 17px; padding-right: 10px; }
   .session-weekday { font-size: 14px; }.session-host { font-size: 16px; }
   .club-session { min-height: 298px; }.session-link { font-size: 20px; }
@@ -89,8 +100,7 @@
   .club-signup-page .brand { font-size: 20px; gap: 10px; }
   .club-hero { padding-top: 38px; padding-bottom: 25px; }
   .club-hero h1 { font-size: clamp(46px,7.7vw,62px); max-width: 100%; }
-  .hero-visual { top: 70px; right: -145px; width: 380px; opacity: .8; }
-  .club-intro { max-width: 66%; font-size: 18px; }
+  .club-intro { max-width: 100%; font-size: 18px; }
   .club-signup-page .section-kicker { font-size: 16px; }
   .club-sessions { grid-template-columns: minmax(0,1fr); gap: 16px; }
   .club-session { grid-template-columns: 60% 40%; min-height: 274px; }
@@ -111,7 +121,6 @@
   .club-hero h1 { font-size: clamp(41px,10.5vw,54px); margin-bottom: 24px; line-height: 1.04; }
   .club-signup-page .section-kicker { font-size: 14px; margin-bottom: 19px; }
   .club-intro { max-width: 100%; font-size: 17px; margin-bottom: 22px; }.club-intro p { margin-bottom: 14px; }
-  .hero-visual { display: none; }
   .club-facts { position: relative; z-index: 1; gap: 7px; margin-bottom: 32px; }
   .club-facts li { font-size: 14px; padding: 8px 15px; }
   .club-choose { font-size: 18px; margin-bottom: 16px; }
@@ -136,4 +145,16 @@
   html { scroll-behavior: auto; }
   .club-signup-page :is(.club-session,.btn) { transition: none; }
   .club-signup-page :is(.club-session,.btn):hover { transform: none; }
+}
+
+/* Compact screens get their own decoration spacing, clear of all form controls. */
+@media (max-width: 1100px) {
+  .hero-blanket { left: -145px; width: 470px; opacity: .52; }
+  .contact-visual { position: relative; width: 260px; height: auto; right: auto; bottom: auto; margin: -22px -26px 8px auto; }
+  .club-signup-page #contact .contact-box { width: 100%; }
+}
+@media (max-width: 520px) {
+  .hero-blanket { display: block; top: -72px; left: -85px; width: 260px; opacity: .62; }
+  .contact-visual { width: 222px; height: auto; margin: -28px -24px 10px auto; }
+  .club-signup-page { background: radial-gradient(ellipse at 55% 15%, #f6e8d2d9 0%, transparent 49%), radial-gradient(ellipse at 0% 57%, #c18b5966 0%, transparent 49%), linear-gradient(145deg, #c99e74, #ecd8ba 33%, #dfbd95 66%, #bf8d5d); }
 }
