@@ -32,9 +32,10 @@
 .club-hero h1 { font-size: clamp(48px, 6.1vw, 82px); line-height: 1.04; font-weight: 900; letter-spacing: -.025em; margin: 0 0 30px; max-width: 890px; }
 .club-intro { max-width: 780px; font-size: 20px; color: var(--ink); line-height: 1.55; margin-bottom: 28px; }
 .club-intro p { margin: 0 0 16px; }
-.club-facts { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; list-style: none; margin: 0 0 36px; }
-.club-facts li { padding: 9px 22px; border: 1px solid #d1b498; background: #f6eee3c9; border-radius: 99px; font-size: 17px; font-weight: 600; }
-.club-facts li:first-child { color: #88451f; background: #efd0b5; border-color: #d9ae8c; }
+.club-facts { display: flex; flex-wrap: wrap; align-items: center; gap: 0; padding: 0; list-style: none; margin: 0 0 36px; color: var(--muted); }
+.club-facts li { padding: 0; border: 0; background: transparent; border-radius: 0; font-size: 17px; font-weight: 600; }
+.club-facts li + li::before { content: "·"; display: inline-block; margin: 0 14px; color: var(--muted); font-weight: 400; }
+.club-facts li:first-child { color: var(--red); }
 /* Isolated opaque objects retain their natural fringe and soft contact shadows. */
 .cozy-still-life { width: 100%; height: auto; }
 .hero-blanket { position: absolute; pointer-events: none; left: -125px; top: -115px; width: clamp(370px, 33vw, 650px); filter: drop-shadow(0 6px 7px #56382018); }
@@ -119,8 +120,9 @@
   .club-hero h1 { font-size: clamp(41px,10.5vw,54px); margin-bottom: 24px; line-height: 1.04; }
   .club-signup-page .section-kicker { font-size: 14px; margin-bottom: 19px; }
   .club-intro { max-width: 100%; font-size: 17px; margin-bottom: 22px; }.club-intro p { margin-bottom: 14px; }
-  .club-facts { position: relative; z-index: 1; gap: 7px; margin-bottom: 32px; }
-  .club-facts li { font-size: 14px; padding: 8px 15px; }
+  .club-facts { position: relative; z-index: 1; gap: 0; margin-bottom: 32px; }
+  .club-facts li { font-size: 14px; padding: 0; }
+  .club-facts li + li::before { margin: 0 10px; }
   .club-choose { font-size: 18px; margin-bottom: 16px; }
   .club-session { grid-template-columns: 58% 42%; min-height: 255px; border-radius: 21px; }
   .session-copy { padding: 18px 10px 18px 14px; }.session-weekday { font-size: 13px; margin-bottom: 14px; }
@@ -229,8 +231,6 @@
 [data-cozy-theme="evening"] .club-signup-page .btn-main-site:hover { background: #644832; }
 [data-cozy-theme="evening"] .club-signup-page .btn-primary { background: #b85e2e; border-color: #cf7d45; }
 [data-cozy-theme="evening"] .club-signup-page .btn-primary:hover { background: #a95024; }
-[data-cozy-theme="evening"] .club-facts li { background: #523d2c; border-color: #8c6a49; }
-[data-cozy-theme="evening"] .club-facts li:first-child { background: #75482a; color: #ffe0b9; }
 [data-cozy-theme="evening"] .club-session { background: #49362cf5; }
 [data-cozy-theme="evening"] .club-signup-page #contact .contact-box { background: #48362bf5; }
 [data-cozy-theme="evening"] .club-signup-page .field :is(input,select) { background: #30251fe6; border-color: #96795f; color: var(--ink); }
@@ -278,4 +278,17 @@
 @media (min-width: 521px) and (max-width: 1100px) {
   .hero-blanket { width: 360px; top: -135px; left: -135px; }
   .hero-blanket-right { left: auto; right: -135px; }
+}
+
+/* One warm confirmation card in both lighting modes. */
+.club-signup-page .demo-form-status.is-success {
+  position: relative; padding: 17px 18px 17px 51px;
+  background: #f4e6d3; color: #563b2a; border: 1px solid #cfad8c;
+  border-radius: 14px; font-weight: 400; line-height: 1.55;
+}
+.club-signup-page .demo-form-status.is-success::before {
+  content: "✓"; position: absolute; top: 18px; left: 17px;
+  display: grid; place-items: center; width: 23px; height: 23px;
+  border: 1px solid #bc744a; border-radius: 50%; color: #a6532c;
+  font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 1;
 }
