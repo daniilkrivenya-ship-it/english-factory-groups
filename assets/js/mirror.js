@@ -237,7 +237,7 @@
 
       goal:
         googlePayload.direction ||
-        'Группы английского языка',
+        'Разговорный клуб · Hygge',
 
       landing_url:
         window.location.href,
@@ -271,9 +271,16 @@
         '2026-09-04',
 
       client_version:
-        'group-20260923-1',
+        'club-20261117-1',
 
-      website: '',
+      website: googlePayload.website || '',
+
+      format: googlePayload.format || 'Разговорный клуб',
+      comment: googlePayload.comment || '',
+      contact_method: googlePayload.contact_method || '',
+      club_date: googlePayload.club_date || '',
+      club_time: googlePayload.club_time || '',
+      club_host: googlePayload.club_host || '',
 
       original_payload:
         googlePayload
