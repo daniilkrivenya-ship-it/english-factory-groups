@@ -35,13 +35,14 @@
 .club-facts { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; list-style: none; margin: 0 0 36px; }
 .club-facts li { padding: 9px 22px; border: 1px solid #d1b498; background: #f6eee3c9; border-radius: 99px; font-size: 17px; font-weight: 600; }
 .club-facts li:first-child { color: #88451f; background: #efd0b5; border-color: #d9ae8c; }
-/* Fade every exposed bitmap edge; solid centers keep the textile and mug crisp. */
-.cozy-mug { width: 100%; height: auto; mask-image: linear-gradient(to right, transparent, #000 13%, #000 75%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 73%, transparent); mask-composite: intersect; }
-.hero-blanket { position: absolute; pointer-events: none; left: -125px; top: -115px; width: clamp(370px, 33vw, 650px); opacity: .65; mask-image: linear-gradient(to right, #000 26%, transparent 98%), linear-gradient(to bottom, #000 25%, transparent 96%); mask-composite: intersect; }
+/* Isolated opaque objects retain their natural fringe and soft contact shadows. */
+.cozy-mug { width: 100%; height: auto; }
+.hero-blanket { position: absolute; pointer-events: none; left: -125px; top: -115px; width: clamp(370px, 33vw, 650px); filter: drop-shadow(0 6px 7px #56382018); }
+.hero-blanket-right { left: auto; right: -125px; }
 .hero-blanket img { width: 100%; height: auto; }
 .blanket-light { top: 62%; left: 64%; }
 .signup-container { position: relative; }
-.contact-visual { position: absolute; pointer-events: none; width: 410px; right: -118px; bottom: 12px; }
+.contact-visual { position: absolute; pointer-events: none; width: 360px; right: -118px; bottom: 12px; }
 .club-signup-page #contact .section-head { position: relative; z-index: 1; }
 .club-signup-page #contact .contact-box { position: relative; width: calc(100% - 240px); z-index: 1; background: #f7f0e5e6; }
 
@@ -149,12 +150,15 @@
 
 /* Compact screens get their own decoration spacing, clear of all form controls. */
 @media (max-width: 1100px) {
-  .hero-blanket { left: -145px; width: 470px; opacity: .52; }
+  .hero-blanket { left: -145px; width: 470px; }
+  .hero-blanket-right { left: auto; right: -145px; }
   .contact-visual { position: relative; width: 260px; height: auto; right: auto; bottom: auto; margin: -22px -26px 8px auto; }
   .club-signup-page #contact .contact-box { width: 100%; }
 }
 @media (max-width: 520px) {
-  .hero-blanket { display: block; top: -72px; left: -85px; width: 260px; opacity: .62; }
+  .hero-blanket { display: block; top: -100px; left: -85px; width: 240px; }
+  .hero-blanket-right { left: auto; right: -85px; }
+  .club-signup-page .club-hero { padding-top: 52px; }
   .contact-visual { width: 222px; height: auto; margin: -28px -24px 10px auto; }
   .club-signup-page { background: radial-gradient(ellipse at 55% 15%, #f6e8d2d9 0%, transparent 49%), radial-gradient(ellipse at 0% 57%, #c18b5966 0%, transparent 49%), linear-gradient(145deg, #c99e74, #ecd8ba 33%, #dfbd95 66%, #bf8d5d); }
 }
@@ -181,16 +185,10 @@
 }
 .club-signup-page .topbar { background: #f1e8dae8; }
 .club-session { background: #f8f1e7ed; }
-.hero-hygge { position: absolute; width: 300px; right: clamp(-160px, calc(720px - 60vw), -40px); top: 72px; text-align: center; transform: rotate(-7deg); pointer-events: none; color: #925a36; }
 .hygge-word { display: block; font-family: Caveat, cursive; font-size: 166px; font-weight: 500; line-height: 1.05; letter-spacing: -.025em; }
 .hygge-caption { display: block; font-family: Arial,sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: .09em; margin-top: 14px; color: #795336; }
-.hero-hygge .hygge-word { opacity: .7; }
-.hygge-spark { position: absolute; background: #fff2b9; clip-path: polygon(50% 0,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0 50%,41% 41%); filter: drop-shadow(0 0 4px #f3c777); }
-.spark-one { width: 18px; height: 18px; top: 12px; right: 7px; transform: rotate(12deg); }
-.spark-two { width: 10px; height: 10px; bottom: 42px; left: 12px; }
 .mobile-hygge { display: none; }
 @media (max-width: 1100px) {
-  .hero-hygge { display: none; }
   .contact-visual { width: 100%; margin: -24px 0 2px; }
   .contact-visual .cozy-mug { width: 240px; margin-left: auto; }
   .mobile-hygge { display: block; position: absolute; width: 190px; right: 215px; bottom: 48px; text-align: center; transform: rotate(-7deg); color: #925a36; }
@@ -200,7 +198,7 @@
 @media (max-width: 520px) {
   .club-signup-page::before { opacity: .58; background-size: 160px 160px,160px 160px,auto,auto; }
   .contact-visual { width: 100%; margin: -29px 0 -6px; }
-  .contact-visual .cozy-mug { width: clamp(180px,48vw,210px); margin-right: -21px; }
+  .contact-visual .cozy-mug { width: clamp(195px,54vw,230px); margin-right: -21px; }
   .mobile-hygge { left: 0; right: auto; bottom: 43px; width: 145px; }
   .mobile-hygge .hygge-word { font-size: 82px; }
   .mobile-hygge .hygge-caption { font-size: 10px; margin-top: 7px; }
