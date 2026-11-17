@@ -3,3 +3,5 @@
 @media(max-width:680px){.club-hero{padding:35px 0 22px}.club-hero h1{font-size:42px;line-height:1.05}.club-intro{font-size:21px}.club-facts{gap:7px;margin-bottom:24px}.club-facts li{padding:7px 13px;font-size:17px}.club-sessions{grid-template-columns:minmax(0,1fr);gap:12px}.club-session{padding:20px 22px;border-radius:20px}.club-session strong{font-size:30px}.club-session time span{display:inline;font-size:22px;margin-left:12px}.session-link{margin-top:5px}.club-signup-page #contact{padding-top:18px}.club-signup-page #contact .contact-box{padding:21px 18px}.club-signup-page .contact-grid{grid-template-columns:minmax(0,1fr)}.club-signup-page .field select{font-size:18px}.club-signup-page #contact .section-text{font-size:20px}.club-signup-page .consent-row{font-size:15px}.club-signup-page .field-hint{font-size:15px}}
 @media(max-width:370px){.club-hero h1{font-size:36px}.club-session time span{display:block;margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.club-session{transition:none}.club-session:hover{transform:none}}
+
+.session-link>span{font-family:Arial,sans-serif}
