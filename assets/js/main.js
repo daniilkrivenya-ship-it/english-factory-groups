@@ -151,17 +151,35 @@
     return { phone: '', email: '', method: 'other', comment: `Контакт: ${contact}` };
   };
 
+  const clubDates = {
+    '2026-11-28': { label: '28 ноября 2026 · 13:00 МСК', host: 'Даниил' },
+    '2026-11-29': { label: '29 ноября 2026 · 13:00 МСК', host: 'Елена' }
+  };
+  const clubDate = document.getElementById('club-date');
   const syncLegacyContactFields = () => {
     const details = inferContactDetails(document.getElementById('contact-field')?.value || '');
+    const session = clubDates[clubDate?.value];
     document.getElementById('legacyPhone').value = details.phone;
     document.getElementById('legacyEmail').value = details.email;
     document.getElementById('legacyContactMethod').value = details.method;
-    document.getElementById('legacyComment').value = details.comment;
+    document.getElementById('direction').value = session
+      ? `Разговорный клуб · Hygge · ${session.label} · ${session.host}`
+      : 'Разговорный клуб · Hygge';
+    document.getElementById('clubHost').value = session?.host || '';
+    document.getElementById('legacyComment').value = [details.comment, session
+      ? `Бесплатный разговорный клуб Hygge. ${session.label}. Ведущий: ${session.host}. Онлайн, 60 минут.`
+      : ''].filter(Boolean).join('\n');
   };
+  clubDate?.addEventListener('change', syncLegacyContactFields);
+  document.querySelectorAll('[data-club-date]').forEach(link => link.addEventListener('click', () => {
+    clubDate.value = link.dataset.clubDate;
+    clubDate.dispatchEvent(new Event('change', { bubbles: true }));
+  }));
+  let isSubmitting = false;
 
   window.updateFormState = () => {
     if (!form || !submit) return;
-    submit.disabled = !form.checkValidity();
+    submit.disabled = isSubmitting || !form.checkValidity();
   };
 
   if (form && submit) {
@@ -174,6 +192,7 @@
     updateFormState();
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (isSubmitting) return;
       updateFormState();
 
       if (!form.checkValidity()) {
@@ -182,6 +201,7 @@
       }
 
       const originalLabel = submit.textContent;
+      isSubmitting = true;
       submit.disabled = true;
       submit.textContent = 'Отправляем…';
       form.setAttribute('aria-busy', 'true');
@@ -193,6 +213,9 @@
       }
 
       try {
+        document.getElementById('name').value = document.getElementById('name').value.trim();
+        document.getElementById('contact-field').value = document.getElementById('contact-field').value.trim();
+        if (!form.checkValidity() || !clubDates[clubDate.value]) throw new Error('Заполните имя, контакт и выберите дату встречи.');
         syncLegacyContactFields();
         const payload = new URLSearchParams();
         new FormData(form).forEach((value, key) => payload.append(key, String(value)));
@@ -210,7 +233,7 @@
         form.querySelectorAll('[aria-invalid="true"]').forEach((field) => field.removeAttribute('aria-invalid'));
 
         if (status) {
-          status.textContent = 'Заявка отправлена. Мы свяжемся с вами в ближайшее время.';
+          status.textContent = 'Заявка отправлена! Свяжемся с вами, подтвердим выбранную дату и пришлём ссылку на встречу.';
           status.classList.remove('is-pending', 'is-error');
           status.classList.add('is-visible', 'is-success');
         }
@@ -222,6 +245,7 @@
           status.classList.add('is-visible', 'is-error');
         }
       } finally {
+        isSubmitting = false;
         form.removeAttribute('aria-busy');
         submit.textContent = originalLabel;
         updateFormState();
