@@ -1,7 +1,139 @@
-/* Speaking-club landing: keep the existing brand, gears and shared form styles. */
-.club-container{max-width:960px}.club-hero{padding:64px 0 38px}.club-hero h1{font-size:clamp(38px,5.8vw,68px);line-height:1.06;letter-spacing:-.035em;margin:0 0 22px;max-width:850px}.club-intro{font-size:23px;line-height:1.5;color:#555a63;max-width:740px;margin:0 0 24px}.club-facts{list-style:none;padding:0;margin:0 0 30px;display:flex;flex-wrap:wrap;gap:10px}.club-facts li{background:#fff;border:1px solid var(--line);padding:9px 18px;border-radius:100px;font-size:19px;font-weight:700}.club-facts li:first-child{background:var(--soft-red);border-color:#e9c4c0;color:var(--red)}.club-choose{margin:0 0 14px;color:#555a63;font-size:19px}.club-sessions{display:grid;grid-template-columns:1fr 1fr;gap:18px}.club-session{display:flex;flex-direction:column;gap:8px;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:24px;padding:24px 28px;box-shadow:var(--shadow-soft);transition:border-color .2s,transform .2s}.club-session:hover{border-color:var(--red);transform:translateY(-2px)}.club-session:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.session-weekday{font-size:17px;color:var(--muted)}.club-session strong{font-size:32px;line-height:1.2}.club-session time span{display:block;font-size:24px;color:#345e87;margin-top:7px}.club-session>span:not(.session-weekday):not(.session-link){font-size:19px}.session-link{color:var(--red);font-size:17px;font-weight:700;margin-top:12px;display:flex;justify-content:space-between;align-items:center}.club-signup-page #contact{padding:24px 0 64px}.club-signup-page #contact>.container{max-width:960px}.club-signup-page #contact .section-head{display:block;margin-bottom:22px}.club-signup-page #contact .section-text{max-width:700px;margin-top:14px;font-size:21px}.club-signup-page #contact h2{font-size:clamp(30px,4vw,43px)}.club-signup-page .contact-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.club-signup-page .field{min-width:0}.club-signup-page .field label{font-size:18px}.club-signup-page .field select{font-size:19px;min-width:0}.club-signup-page .field-hint{font-size:16px;line-height:1.4}.club-signup-page .form-actions .btn{min-height:50px;font-size:20px}.club-signup-page .consent-row{font-size:16px}.club-signup-page .actions .btn{min-width:0}.club-signup-page .form-actions{margin-top:22px}.club-signup-page #contact{scroll-margin-top:100px}
-@media(max-width:680px){.club-hero{padding:35px 0 22px}.club-hero h1{font-size:42px;line-height:1.05}.club-intro{font-size:21px}.club-facts{gap:7px;margin-bottom:24px}.club-facts li{padding:7px 13px;font-size:17px}.club-sessions{grid-template-columns:minmax(0,1fr);gap:12px}.club-session{padding:20px 22px;border-radius:20px}.club-session strong{font-size:30px}.club-session time span{display:inline;font-size:22px;margin-left:12px}.session-link{margin-top:5px}.club-signup-page #contact{padding-top:18px}.club-signup-page #contact .contact-box{padding:21px 18px}.club-signup-page .contact-grid{grid-template-columns:minmax(0,1fr)}.club-signup-page .field select{font-size:18px}.club-signup-page #contact .section-text{font-size:20px}.club-signup-page .consent-row{font-size:15px}.club-signup-page .field-hint{font-size:15px}}
-@media(max-width:370px){.club-hero h1{font-size:36px}.club-session time span{display:block;margin-left:0}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.club-session{transition:none}.club-session:hover{transform:none}}
-
-.session-link>span{font-family:Arial,sans-serif}
+/* Hygge: Akrobat headings, neutral body type, warm paper and host portraits. */
+.club-signup-page {
+  --red: #ad5527; --blue: #985c32; --ink: #382a21; --muted: #6a584a;
+  --line: #d6bda5; --paper: #eae0d2; --soft-red: #f1d8bf;
+  --font: Arial, "Helvetica Neue", sans-serif; --container: 1120px;
+  background: radial-gradient(ellipse at 87% 18%, #d9bea24d, transparent 34%), radial-gradient(ellipse at 8% 74%, #e7bd8540, transparent 35%), linear-gradient(135deg, #eee4d6, #e8dccb 60%, #eee3d4);
+  background-attachment: scroll; font-family: var(--font); font-size: 18px; line-height: 1.55;
+}
+.club-signup-page::before { display: none; }
+.club-signup-page main { overflow: clip; }
+.club-signup-page h1, .club-signup-page h2, .club-signup-page .brand, .club-signup-page .section-kicker, .club-session strong, .session-link { font-family: Akrobat, "Arial Narrow", sans-serif; }
+.club-signup-page .container { width: min(var(--container), calc(100% - 64px)); }
+.club-signup-page .topbar { background: #f1e8dacf; border-color: #d6bda54d; box-shadow: none; }
+.club-signup-page .nav { min-height: 104px; }
+.club-signup-page .brand { font-size: 24px; letter-spacing: 0; }
+.club-signup-page .brand-logo { width: 78px; height: 78px; background: transparent; }
+.club-signup-page .btn { font-family: var(--font); font-size: 16px; font-weight: 600; min-height: 48px; letter-spacing: 0; }
+.club-signup-page .btn-primary { background: linear-gradient(110deg, #ad5527, #b75b2b); color: #fff; border-color: #a74c23; box-shadow: 0 7px 20px #8d4f1f12; }
+.club-signup-page .btn-primary:hover { background: #98421e; box-shadow: 0 9px 24px #8d4f1f20; }
+.club-signup-page .btn-primary:disabled { opacity: .7; transform: none; cursor: not-allowed; }
+.club-signup-page .btn-main-site { background: #f7efe459; border-color: var(--line); }
+.club-signup-page .btn-main-site:hover { background: #f7efe4; border-color: #a98162; }
+.club-signup-page :is(a,button,input,select):focus-visible { outline: 3px solid #985021; outline-offset: 4px; }
+.club-hero { padding: 64px 0 42px; }
+.club-container { position: relative; }
+.hero-copy { position: relative; z-index: 1; }
+.club-signup-page .section-kicker { color: var(--red); font-size: 18px; font-weight: 900; letter-spacing: .13em; margin-bottom: 23px; }
+.club-hero h1 { font-size: clamp(48px, 6.1vw, 82px); line-height: 1.04; font-weight: 900; letter-spacing: -.025em; margin: 0 0 30px; max-width: 890px; }
+.club-intro { max-width: 700px; font-size: 20px; color: var(--ink); line-height: 1.55; margin-bottom: 28px; }
+.club-intro p { margin: 0 0 16px; }
+.club-facts { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; list-style: none; margin: 0 0 36px; }
+.club-facts li { padding: 9px 22px; border: 1px solid #d1b498; background: #f6eee3c9; border-radius: 99px; font-size: 17px; font-weight: 600; }
+.club-facts li:first-child { color: #88451f; background: #efd0b5; border-color: #d9ae8c; }
+.hero-visual { position: absolute; top: -39px; right: -140px; width: 510px; pointer-events: none; }
+.cozy-mug { width: 100%; height: auto; mask-image: linear-gradient(to bottom, #000 73%, transparent 99%); }
+.warm-light { position: absolute; width: 4px; height: 4px; border-radius: 100%; background: #fff3c5; box-shadow: 0 0 6px 2px #f1b853b3; }
+.light-one { top: 19%; right: 27%; }.light-two { top: 29%; right: 9%; width: 3px; height: 3px; }.light-three { top: 11%; right: 46%; width: 3px; height: 3px; }
+.club-choose { position: relative; margin: 0 0 20px; font-size: 20px; color: var(--ink); }
+.club-sessions { position: relative; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.club-session { display: grid; grid-template-columns: 55% 45%; min-height: 320px; background: #f8f1e7ce; border: 1px solid var(--line); border-radius: 24px; padding: 5px; overflow: hidden; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.club-session:hover { transform: translateY(-3px); border-color: #af784f; box-shadow: 0 12px 26px #6b402612; }
+.session-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 21px 15px 23px 22px; min-width: 0; }
+.session-weekday { font-size: 16px; color: var(--muted); margin-bottom: 16px; }
+.club-session strong { font-size: clamp(35px,3.3vw,45px); font-weight: 900; line-height: 1.1; white-space: nowrap; letter-spacing: -.02em; }
+.club-session time span { display: block; font-size: 31px; margin-top: 10px; color: var(--red); }
+.session-host { margin-top: 17px; font-size: 17px; }
+.session-link { display: flex; gap: 8px; align-items: center; color: var(--red); margin-top: auto; padding-top: 25px; font-size: 22px; font-weight: 800; white-space: nowrap; }
+.session-link>span { font-family: Arial,sans-serif; }
+.session-portrait { width: 100%; height: 100%; min-height: 0; object-fit: cover; object-position: 50% 24%; border-radius: 19px; }
+.club-signup-page #contact { padding: 35px 0 74px; scroll-margin-top: 118px; }
+.club-signup-page #contact .section-head { display: block; margin-bottom: 27px; }
+.club-signup-page #contact h2 { font-size: clamp(39px,4.7vw,62px); line-height: 1.06; letter-spacing: -.02em; font-weight: 900; }
+.club-signup-page #contact .section-text { margin-top: 18px; max-width: 910px; font-size: 20px; line-height: 1.55; color: var(--ink); }
+.club-signup-page .contact-box { padding: 32px 36px; border: 1px solid var(--line); border-radius: 26px; background: #f7f0e5a8; box-shadow: none; }
+.club-signup-page .contact-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px 24px; }
+.club-signup-page .field { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.club-signup-page .field label { color: var(--ink); font-size: 17px; font-weight: 600; }
+.club-signup-page .field :is(input,select) { min-width: 0; min-height: 52px; border-radius: 13px; background: #fbf6ee9c; border-color: #bda992; font-size: 17px; padding: 12px 16px; }
+.club-signup-page .field input::placeholder { color: #786b60; opacity: 1; }
+.club-signup-page .field select { text-overflow: ellipsis; }
+.club-signup-page .field :is(input,select):focus { border-color: var(--red); box-shadow: 0 0 0 3px #ad552715; }
+.club-signup-page .field-hint { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 0; }
+.club-signup-page .consent-row { font-size: 14px; line-height: 1.55; color: var(--ink); margin-top: 24px; }
+.club-signup-page .consent-row a { color: #824322; }
+.club-signup-page .consent-row input { width: 20px; height: 20px; margin-top: 2px; }
+.club-signup-page .form-actions { margin-top: 23px; }
+.club-signup-page .form-actions .btn { font-family: Akrobat, "Arial Narrow", sans-serif; font-size: 27px; min-height: 58px; padding: 0 30px; border-radius: 17px; font-weight: 800; }
+.club-signup-page .demo-form-status { font-family: var(--font); font-size: 16px; }
+.club-signup-page .site-footer { background: #e5d8c64d; border-top: 1px solid #d6bda56b; padding-top: 30px; }
+.club-signup-page .footer-company strong, .club-signup-page .footer-requisites strong { font-size: 16px; }
+.club-signup-page .footer-company span, .club-signup-page .footer-requisites span, .club-signup-page .footer-links a, .club-signup-page .footer-bottom { font-size: 12px; color: var(--muted); }
+.club-signup-page .footer-logo { width: 62px; height: 62px; }
+.club-signup-page .footer-links a { color: #66503f; }
+.club-signup-page .cookie-banner { background: #f5ebddf5; border-color: var(--line); }
+.club-signup-page .cookie-banner p { color: var(--ink); font-size: 14px; }
+.club-signup-page .mobile-menu-toggle { background: #f5ebdd; border-color: var(--line); color: var(--ink); }
+.club-signup-page .mobile-menu { background: #eee2d1; }
+@media (max-width: 1100px) {
+  .hero-visual { width: 440px; right: -145px; top: 12px; }
+  .club-intro { max-width: 64%; font-size: 19px; }
+  .session-copy { padding-left: 17px; padding-right: 10px; }
+  .session-weekday { font-size: 14px; }.session-host { font-size: 16px; }
+  .club-session { min-height: 298px; }.session-link { font-size: 20px; }
+}
+@media (max-width: 780px) {
+  .club-signup-page .container { width: calc(100% - 40px); }
+  .club-signup-page .nav { min-height: 80px; }
+  .club-signup-page .brand-logo { width: 60px; height: 60px; }
+  .club-signup-page .brand { font-size: 20px; gap: 10px; }
+  .club-hero { padding-top: 38px; padding-bottom: 25px; }
+  .club-hero h1 { font-size: clamp(46px,7.7vw,62px); max-width: 100%; }
+  .hero-visual { top: 70px; right: -145px; width: 380px; opacity: .8; }
+  .club-intro { max-width: 66%; font-size: 18px; }
+  .club-signup-page .section-kicker { font-size: 16px; }
+  .club-sessions { grid-template-columns: minmax(0,1fr); gap: 16px; }
+  .club-session { grid-template-columns: 60% 40%; min-height: 274px; }
+  .session-copy { padding: 21px 24px; }
+  .club-session strong { font-size: 42px; }.session-weekday { font-size: 16px; }.session-host { font-size: 17px; }
+  .session-portrait { max-height: 290px; }.session-link { font-size: 23px; padding-top: 20px; }
+  .club-signup-page #contact { padding: 30px 0 48px; scroll-margin-top: 92px; }
+  .club-signup-page #contact h2 { font-size: 45px; }
+  .club-signup-page .contact-box { padding: 26px; }
+  .club-signup-page .contact-grid { grid-template-columns: minmax(0,1fr); }
+  .club-signup-page #contact .section-text { font-size: 18px; }
+}
+@media (max-width: 520px) {
+  .club-signup-page .container { width: calc(100% - 32px); }
+  .club-signup-page .nav { min-height: 74px; }
+  .club-signup-page .brand-logo { width: 54px; height: 54px; }
+  .club-signup-page .brand { font-size: 19px; }.club-hero { padding-top: 30px; }
+  .club-hero h1 { font-size: clamp(41px,10.5vw,54px); margin-bottom: 24px; line-height: 1.04; }
+  .club-signup-page .section-kicker { font-size: 14px; margin-bottom: 19px; }
+  .club-intro { max-width: 100%; font-size: 17px; margin-bottom: 22px; }.club-intro p { margin-bottom: 14px; }
+  .hero-visual { display: none; }
+  .club-facts { position: relative; z-index: 1; gap: 7px; margin-bottom: 32px; }
+  .club-facts li { font-size: 14px; padding: 8px 15px; }
+  .club-choose { font-size: 18px; margin-bottom: 16px; }
+  .club-session { grid-template-columns: 58% 42%; min-height: 255px; border-radius: 21px; }
+  .session-copy { padding: 18px 10px 18px 14px; }.session-weekday { font-size: 13px; margin-bottom: 14px; }
+  .club-session strong { font-size: 36px; }.club-session time span { font-size: 27px; margin-top: 9px; }
+  .session-host { font-size: 15px; line-height: 1.4; margin-top: 15px; }.session-link { font-size: 20px; gap: 5px; }
+  .session-portrait { border-radius: 16px; max-height: none; }
+  .club-signup-page #contact h2 { font-size: 40px; }
+  .club-signup-page .contact-box { padding: 23px 18px; border-radius: 21px; }
+  .club-signup-page .field :is(input,select) { font-size: 16px; padding-left: 12px; padding-right: 10px; }
+  .club-signup-page .field label { font-size: 16px; }.club-signup-page .consent-row { font-size: 13px; gap: 9px; }
+  .club-signup-page .form-actions .btn { width: 100%; font-size: 25px; padding: 0 16px; }
+  .club-signup-page .footer-main { gap: 22px; }
+}
+@media (max-width: 350px) {
+  .club-hero h1 { font-size: 37px; }
+  .club-signup-page .form-actions .btn { font-size: 23px; padding: 0 10px; white-space: nowrap; }
+  .session-copy { padding-left: 10px; }.club-session strong { font-size: 32px; }.session-link { font-size: 18px; }.session-host { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .club-signup-page :is(.club-session,.btn) { transition: none; }
+  .club-signup-page :is(.club-session,.btn):hover { transform: none; }
+}
