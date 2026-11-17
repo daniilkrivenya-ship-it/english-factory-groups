@@ -41,7 +41,7 @@
 .hero-blanket-right { left: auto; right: -125px; }
 .hero-blanket img { width: 100%; height: auto; }
 .signup-container { position: relative; }
-.contact-visual { position: absolute; pointer-events: none; width: clamp(320px, calc(50vw - 306px), 400px); right: max(-130px, calc(576px - 50vw)); bottom: -18px; z-index: 2; }
+.contact-visual { position: absolute; pointer-events: none; width: clamp(320px, calc(50vw - 306px), 400px); right: max(-130px, calc(576px - 50vw)); bottom: 82px; z-index: 2; }
 .club-signup-page #contact .section-head { position: relative; z-index: 1; }
 .club-signup-page #contact .contact-box { position: relative; width: calc(100% - 240px); z-index: 1; background: #f7f0e5e6; }
 
@@ -186,4 +186,90 @@
 }
 @media (max-width: 520px) {
   .contact-visual { width: min(280px, 100%); margin: -20px auto -8px; }
+}
+
+/* A single soft contact shadow anchors the existing still-life cutout. */
+.contact-visual::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  left: 9%; right: 6%; bottom: 9%; height: 10%; border-radius: 50%;
+  background: radial-gradient(ellipse, #54331932 0%, #54331916 45%, transparent 73%);
+  filter: blur(7px);
+}
+.club-hero { padding-top: 112px; }
+.cozy-garland { position: absolute; inset: 0 0 auto; height: 86px; pointer-events: none; z-index: 1; }
+.cozy-garland svg { width: 100%; height: 100%; overflow: visible; }
+.garland-wire { fill: none; stroke: #73543b; stroke-width: 1.4; vector-effect: non-scaling-stroke; opacity: .6; }
+.garland-socket { fill: #795b41; }
+.garland-bulb { fill: #ead6b4; stroke: #b69870; stroke-width: .7; transition: fill .4s, filter .4s; }
+.theme-pull {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  flex: 0 0 54px; width: 54px; min-height: 64px; padding: 0 4px 5px;
+  border: 0; border-radius: 0 0 12px 12px; background: transparent; color: var(--ink);
+  font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.pull-cord { display: block; height: 16px; width: 1px; background: #917151; }
+.pull-bulb { flex-shrink: 0; fill: #e7cf9f; stroke: #946a3e; stroke-width: 1.3; transition: transform .2s, fill .4s, filter .4s; }
+.bulb-base { fill: none; stroke: #785239; }
+.theme-label { font-size: 11px; font-weight: 600; line-height: 1.6; }
+.theme-pull:hover .pull-bulb { transform: translateY(3px); }
+.theme-pull:active .pull-bulb { transform: translateY(6px); }
+.club-signup-page :is(.topbar,.club-session,.contact-box,.cookie-banner,.field input,.field select,.site-footer) { transition: background-color .35s, color .35s, border-color .35s; }
+:root[data-cozy-theme="evening"] { color-scheme: dark; }
+[data-cozy-theme="evening"] .club-signup-page {
+  --ink: #f5e8d7; --muted: #dcc5ac; --red: #f0aa70; --line: #927358;
+  background: radial-gradient(ellipse at 75% 0%, #a06c3d88, transparent 43%),
+    radial-gradient(ellipse at 9% 65%, #82502d66, transparent 55%),
+    linear-gradient(130deg, #493225, #33271f 53%, #63432c);
+}
+[data-cozy-theme="evening"] .club-signup-page::before { opacity: .21; }
+[data-cozy-theme="evening"] .club-signup-page .topbar { background: #30251fed; border-color: #77573d66; }
+[data-cozy-theme="evening"] .club-signup-page .mobile-menu { background: #352820fa; }
+[data-cozy-theme="evening"] .club-signup-page .mobile-menu-toggle { background: #49362a; }
+[data-cozy-theme="evening"] .club-signup-page .btn-main-site { background: #4d382966; }
+[data-cozy-theme="evening"] .club-signup-page .btn-main-site:hover { background: #644832; }
+[data-cozy-theme="evening"] .club-signup-page .btn-primary { background: #b85e2e; border-color: #cf7d45; }
+[data-cozy-theme="evening"] .club-signup-page .btn-primary:hover { background: #a95024; }
+[data-cozy-theme="evening"] .club-facts li { background: #523d2c; border-color: #8c6a49; }
+[data-cozy-theme="evening"] .club-facts li:first-child { background: #75482a; color: #ffe0b9; }
+[data-cozy-theme="evening"] .club-session { background: #49362cf5; }
+[data-cozy-theme="evening"] .club-signup-page #contact .contact-box { background: #48362bf5; }
+[data-cozy-theme="evening"] .club-signup-page .field :is(input,select) { background: #30251fe6; border-color: #96795f; color: var(--ink); }
+[data-cozy-theme="evening"] .club-signup-page .field input::placeholder { color: #cbb59f; }
+[data-cozy-theme="evening"] .club-signup-page :is(.consent-row a,.footer-links a) { color: #efc29c; }
+[data-cozy-theme="evening"] .club-signup-page .site-footer { background: #30251f66; }
+[data-cozy-theme="evening"] .club-signup-page .cookie-banner { background: #38291ff5; }
+[data-cozy-theme="evening"] .club-signup-page :is(a,button,input,select):focus-visible { outline-color: #ffbd7e; }
+[data-cozy-theme="evening"] .garland-wire { stroke: #d2af7e; opacity: .65; }
+[data-cozy-theme="evening"] .garland-bulb { fill: #ffe4a2; stroke: #ffcc76; filter: drop-shadow(0 0 5px #ffb649) drop-shadow(0 0 13px #ffb649aa); }
+[data-cozy-theme="evening"] .pull-bulb { fill: #ffe4a2; filter: drop-shadow(0 0 7px #ffb64999); }
+@media (max-width: 1160px) {
+  .club-signup-page .theme-pull { margin-left: auto; }
+  .club-signup-page .mobile-menu-toggle { margin-left: 0; }
+}
+@media (max-width: 520px) {
+  /* Rotating the corner makes its natural diagonal fringe span the screen. */
+  .club-signup-page .hero-blanket {
+    width: 140%; left: -20%; right: auto;
+    top: calc(102px - 70vw); transform: rotate(45deg);
+  }
+  .club-signup-page .hero-blanket-right { display: none; }
+  .club-signup-page .club-hero { padding-top: 132px; }
+  .cozy-garland { top: 76px; height: 48px; }
+  .club-signup-page .nav { gap: 8px; }
+  .club-signup-page .brand { gap: 8px; }
+  .club-signup-page .brand-logo { flex-basis: 48px; width: 48px; height: 48px; }
+  .theme-pull { width: 44px; flex-basis: 44px; }
+}
+@media (max-width: 350px) {
+  .club-signup-page .brand { font-size: 17px; }
+  .club-signup-page .mobile-menu-toggle { width: 42px; height: 42px; flex-basis: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .club-signup-page *, .club-signup-page *::before { transition: none !important; }
+  .theme-pull:hover .pull-bulb, .theme-pull:active .pull-bulb { transform: none; }
+}
+
+@media (min-width: 521px) and (max-width: 1100px) {
+  .hero-blanket { width: 360px; top: -135px; left: -135px; }
+  .hero-blanket-right { left: auto; right: -135px; }
 }
