@@ -158,3 +158,55 @@
   .contact-visual { width: 222px; height: auto; margin: -28px -24px 10px auto; }
   .club-signup-page { background: radial-gradient(ellipse at 55% 15%, #f6e8d2d9 0%, transparent 49%), radial-gradient(ellipse at 0% 57%, #c18b5966 0%, transparent 49%), linear-gradient(145deg, #c99e74, #ecd8ba 33%, #dfbd95 66%, #bf8d5d); }
 }
+
+/* Woven checks and a small handwritten accent complete the textile theme. */
+@font-face {
+  font-family: "Caveat";
+  src: url("../fonts/Caveat.woff") format("woff");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+.club-signup-page { position: relative; }
+.club-signup-page::before {
+  display: block; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 74px, #fff6e647 74px 118px, #754d321c 118px 162px, transparent 162px 236px),
+    repeating-linear-gradient(90deg, transparent 0 74px, #fff6e647 74px 118px, #754d321c 118px 162px, transparent 162px 236px),
+    repeating-linear-gradient(0deg, #6b4a3010 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, #fff7e51a 0 1px, transparent 1px 4px);
+  background-size: auto;
+  opacity: .72;
+  mask-image: radial-gradient(ellipse at 43% 22%, #0004 0%, #0009 44%, #000 87%);
+}
+.club-signup-page .topbar { background: #f1e8dae8; }
+.club-session { background: #f8f1e7ed; }
+.hero-hygge { position: absolute; width: 300px; right: clamp(-160px, calc(720px - 60vw), -40px); top: 72px; text-align: center; transform: rotate(-7deg); pointer-events: none; color: #925a36; }
+.hygge-word { display: block; font-family: Caveat, cursive; font-size: 166px; font-weight: 500; line-height: 1.05; letter-spacing: -.025em; }
+.hygge-caption { display: block; font-family: Arial,sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: .09em; margin-top: 14px; color: #795336; }
+.hero-hygge .hygge-word { opacity: .7; }
+.hygge-spark { position: absolute; background: #fff2b9; clip-path: polygon(50% 0,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0 50%,41% 41%); filter: drop-shadow(0 0 4px #f3c777); }
+.spark-one { width: 18px; height: 18px; top: 12px; right: 7px; transform: rotate(12deg); }
+.spark-two { width: 10px; height: 10px; bottom: 42px; left: 12px; }
+.mobile-hygge { display: none; }
+@media (max-width: 1100px) {
+  .hero-hygge { display: none; }
+  .contact-visual { width: 100%; margin: -24px 0 2px; }
+  .contact-visual .cozy-mug { width: 240px; margin-left: auto; }
+  .mobile-hygge { display: block; position: absolute; width: 190px; right: 215px; bottom: 48px; text-align: center; transform: rotate(-7deg); color: #925a36; }
+  .mobile-hygge .hygge-word { font-size: 104px; line-height: .95; }
+  .mobile-hygge .hygge-caption { font-size: 11px; line-height: 1.45; letter-spacing: .03em; margin-top: 9px; }
+}
+@media (max-width: 520px) {
+  .club-signup-page::before { opacity: .58; background-size: 160px 160px,160px 160px,auto,auto; }
+  .contact-visual { width: 100%; margin: -29px 0 -6px; }
+  .contact-visual .cozy-mug { width: clamp(180px,48vw,210px); margin-right: -21px; }
+  .mobile-hygge { left: 0; right: auto; bottom: 43px; width: 145px; }
+  .mobile-hygge .hygge-word { font-size: 82px; }
+  .mobile-hygge .hygge-caption { font-size: 10px; margin-top: 7px; }
+}
+@media (max-width: 350px) {
+  .mobile-hygge { width: 127px; }
+  .mobile-hygge .hygge-word { font-size: 73px; }
+  .mobile-hygge .hygge-caption { font-size: 9px; }
+}
