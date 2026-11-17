@@ -12,7 +12,7 @@
       const evening = theme === 'evening';
       button.setAttribute('aria-pressed', String(evening));
       button.title = evening ? 'Вернуть дневной свет' : 'Включить уютный вечер';
-      button.querySelector('.theme-label').textContent = evening ? 'День' : 'Вечер';
+
     };
     update(saved);
     button.addEventListener('click', () => {
